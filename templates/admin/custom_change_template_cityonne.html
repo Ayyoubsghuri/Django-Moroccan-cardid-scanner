@@ -1,0 +1,100 @@
+{% extends 'admin/change_form.html' %}
+{% block submit_buttons_bottom %}
+    
+    {{ block.super }} 
+    <div class="line-img"style="display:flex;flex-direction:row;justify-content:space-around">
+        <img src="" alt="Front Id Image" id="front" style="height:31em;border-radius: 20px;">
+        <img src="" id="back" alt="Back Id Image" style="height:31em;border-radius: 20px;">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        document.body.style.zoom = "80%";
+        var CIN = document.getElementsByClassName('vTextField')[0];
+        var front = document.getElementById('front');
+        var back = document.getElementById('back');
+
+
+        front.src="/static/images/cardid_all/front-"+CIN.value+".jpg";
+        back.src="/static/images/cardid_all/back-"+CIN.value+".jpg";
+        front.addEventListener("click", zoom);
+        front.addEventListener("mouseout", zoomout);
+
+        back.addEventListener("click", zoom2);
+        back.addEventListener("mouseout", zoomout2);
+
+        function zoom2(){
+            anime({
+            targets: '#back',
+            scale: 1.5,
+            padding: 30,
+            zIndex: [
+                 { value: '10', duration: 500, },
+            ],
+            translateY: [
+                { value: 60, duration: 1000, easing: 'easeOutSine' }
+            ],
+            translateX: [
+                { value: -200, duration: 1000, easing: 'easeInOutSine' }
+            ],
+            delay: anime.stagger(100),
+            })
+        }
+
+        function zoomout2(){
+            anime({
+            targets: '#back',
+            scale: 1,
+            padding: 0,
+            zIndex: [
+                 { value: '0', duration: 500, },
+            ],
+            translateY: [
+                { value: 0, duration: 1000, easing: 'easeOutSine' }
+            ],
+            translateX: [
+                { value: 0, duration: 1000, easing: 'easeInOutSine' }
+            ],
+            delay: anime.stagger(100),
+            })
+        }
+
+
+        function zoom(){
+            anime({
+            targets: '#front',
+            scale: 1.5,
+            padding: 30,
+            zIndex: [
+                 { value: '10', duration: 500, },
+            ],
+            translateY: [
+                { value: 60, duration: 1000, easing: 'easeOutSine' }
+            ],
+            translateX: [
+                { value: 200, duration: 1000, easing: 'easeInOutSine' }
+            ],
+            delay: anime.stagger(100),
+            })
+        }
+        function zoomout(){
+            anime({
+            targets: '#front',
+            scale: 1,
+            padding: 0,
+            zIndex: [
+                 { value: '0', duration: 500, }
+            ],
+            translateY: [
+                { value: 0, duration: 1000, easing: 'easeOutSine' }
+            ],
+            translateX: [
+                { value: 0, duration: 1000, easing: 'easeInOutSine' }
+            ],
+            delay: anime.stagger(100),
+            })
+        }
+
+        console.log("static/images/cardid_all/front-"+CIN.value+".jpg");
+    </script>
+{% endblock %}

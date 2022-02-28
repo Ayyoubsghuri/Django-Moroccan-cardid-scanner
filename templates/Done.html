@@ -1,0 +1,114 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+        body {
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10%;
+        }
+
+        .content .img {
+            height: 17em;
+            filter: invert(34%) sepia(72%) saturate(4409%) hue-rotate(136deg) brightness(92%) contrast(96%);
+        }
+
+        .content input[type="button"] {
+            padding: 20px 90px;
+            background-color: #059142;
+            color: white;
+            font-size: 22px;
+            font-family: 'Comfortaa', cursive;
+            border: 0;
+            border-radius: 12px;
+            margin-right: -24px;
+        }
+
+        .ml2 {
+            font-weight: 900;
+            font-size: 2.8em;
+            margin-right:-35px;
+        }
+
+        .ml2 .letter {
+            display: inline-block;
+            line-height: 1em;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M15.7252 9.34159C16.0343 9.6435 16.0343 10.133 15.7252 10.4349L11.5044 14.5581C11.1953 14.86 10.6943 14.86 10.3852 14.5581L8.27481 12.4965C7.96575 12.1946 7.96575 11.7051 8.27481 11.4032C8.58387 11.1013 9.08495 11.1013 9.39401 11.4032L10.9448 12.9181L14.606 9.34159C14.915 9.03968 15.4161 9.03968 15.7252 9.34159Z"
+                fill="#030D45" />
+            <path id="path" fill-rule="evenodd" clip-rule="evenodd"
+                d="M12.3972 3.60599C12.1387 3.52624 11.8613 3.52624 11.6028 3.60599L4.50492 5.79558C3.87413 5.99017 3.48845 6.61109 3.60306 7.2475L4.71511 13.4224C5.12312 15.688 6.30725 17.719 8.21521 18.8861C8.91612 19.3148 9.64652 19.715 10.327 20.0057C11.024 20.3034 11.5953 20.4538 12 20.4538C12.4047 20.4538 12.976 20.3034 13.673 20.0057C14.3535 19.715 15.0839 19.3148 15.7848 18.8861C17.6928 17.719 18.8769 15.688 19.2849 13.4224L20.3969 7.2475C20.5116 6.61109 20.1259 5.99017 19.4951 5.79558L12.3972 3.60599ZM11.1262 2.13158C11.6949 1.95614 12.3051 1.95614 12.8738 2.13158L19.9717 4.32117C21.3594 4.74926 22.2079 6.11528 21.9558 7.5154L20.8437 13.6903C20.3769 16.2824 18.9961 18.746 16.6248 20.1966C15.8876 20.6475 15.0849 21.0901 14.3071 21.4223C13.5459 21.7475 12.7339 22 12 22C11.2661 22 10.4541 21.7475 9.69288 21.4223C8.9151 21.0901 8.11237 20.6475 7.37518 20.1966C5.00388 18.746 3.62307 16.2824 3.15626 13.6903L2.04421 7.5154C1.79206 6.11528 2.64056 4.74926 4.02829 4.32117L11.1262 2.13158Z"
+                fill="#030D45" />
+        </svg>
+        <div class="h1">
+            <h1 class="ml2">Votre commande est passée avec succés</h1>
+        </div>
+        <p>Veuillez clickez sur le boutton ci-dessous pour choisissez une autre certificat</p>
+        <input id="btn" type="button" onclick="location.href = '..';" value="Choisissez une autre certificat">
+    </div>
+    <script>
+        document.body.style.zoom = "80%";
+        var lineDrawing = anime({
+            targets: 'path, #path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutCubic',
+            duration: 4000,
+            begin: function (anim) {
+                document.querySelector('path').setAttribute("stroke", "pink");
+                document.querySelector('path').setAttribute("fill", "none");
+                document.querySelector('#path').setAttribute("stroke", "pink");
+                document.querySelector('#path').setAttribute("fill", "none");
+            },
+            complete: function (anim) {
+                document.querySelector('path').setAttribute("fill", "none");
+                document.querySelector('#path').setAttribute("fill", "none");
+            },
+            autoplay: true
+        });
+
+        var textWrapper = document.querySelector('.ml2');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({ loop: false })
+            .add({
+                targets: '.ml2 .letter',
+                scale: [4, 1],
+                opacity: [0, 1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 950,
+                delay: (el, i) => 70 * i
+            }).add({
+                targets: '.ml2',
+                opacity: 0.5,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+</body>
+
+</html>

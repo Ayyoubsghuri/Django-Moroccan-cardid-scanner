@@ -1,0 +1,140 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Check ID</title>
+  <link rel="stylesheet" href="{% static 'css/cid.css'%}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300&display=swap');
+    body{
+      font-family: 'Roboto Serif', sans-serif;
+    }
+    #loading {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 120vh;
+      background: #fff url("{% static 'images/loader.gif'%}") no-repeat center center;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading"></div>
+
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 1;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="" rel="dofollow">Province Rehamna</a></h1>
+        </div>
+        <div class="formbg-outer" id="form">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <span class="padding-bottom--15">Veuillez inserer votre numéro de téléphone Pour Receiver SMS apres Votre Command Complete</span>
+              <form action="" id="stripe-login" method="POST">
+                {% csrf_token %}
+                <div class="field padding-bottom--24">
+                  <label for="number">Numéro de téléphone:</label>
+                  <input type="tel" placeholder="Numéro de téléphone 06..." name="number" maxlength="10">
+                  <p style="color: red;">{{alert}} </p>
+                </div>
+
+
+                <div class="field padding-bottom--24">
+                  <input type="Submit" id="submitSub" name="Sub" value="Submit">
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  -->
+  <div id="myModal" class="modal">
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="modal-content">
+        <h1 style="width: 50%;">{{message}} </h1>
+        <p style="width: 50%;">Veuillez mettre votre CIN comme le shema devant vous</p>
+        <p style="width: 50%;">Aprés que vous avez mis votre CIN , veuillez clickez sur le boutton ci-dessous</p>
+        <img style="height: 12em;float:right;margin-top: -9em;filter: drop-shadow(5px 5px 5px #222222);"
+          src="{% static 'images/'|add:cc|add:'.png'%}" alt="scanner">
+        <img style="height: 18em;float:right;margin-top: -9em;filter: drop-shadow(5px 5px 5px #222222);"
+          src="{% static 'images/scanner.png'%}" alt="scanner">
+        <br>
+        <input type="submit" id="submitInput" name="Scan" value="Click ici pour commencez le scan"
+          style="padding:20px 60px;border:0px;background-color: aquamarine;border-radius: 10px;font-size: 20px;color:black;">
+      </div>
+    </form>
+    <script>
+      document.body.style.zoom = "80%";
+      var modal = document.getElementById("myModal");
+      modal.style.display = "{{ style }}";
+
+      const btn = document.querySelector("#submitInput");
+      const btnn = document.querySelector("#submitSub");
+
+      btnn.addEventListener("click", displayLoadin);
+      btn.addEventListener("click", displayLoading);
+
+      // selecting loading div
+      const loader = document.querySelector("#loading");
+
+      // showing loading
+      function displayLoading() {
+        loader.style.display = "block";
+        // to stop loading after some time
+        setTimeout(() => {
+          loader.style.display = "None";
+        }, 400000);
+      }
+
+      function displayLoadin() {
+        loader.style.display = "block";
+        // to stop loading after some time
+        setTimeout(() => {
+          loader.style.display = "None";
+        }, 19000);
+      }
+
+      // hiding loading 
+      function hideLoading() {
+        loader.style.display = "None";
+      }
+      jQuery(document).ready(function () {
+        $("#loading").css("display", "block");
+        jQuery('#loading').fadeOut(2000);
+      });
+
+
+      let el = document.getElementById('form')
+      el.addEventListener("click", myNav);
+      // el.addEventListener("mouseout", myNavO);
+      function myNav() {
+        anime({
+          targets: '#form',
+          scale: 1.5,
+          padding: 30,
+          translateY: [
+            { value: 23, duration: 1000, easing: 'easeOutSine' }
+          ],
+          delay: anime.stagger(100),
+        })
+      }
+    </script>
+  </div>
+</body>
+
+</html>

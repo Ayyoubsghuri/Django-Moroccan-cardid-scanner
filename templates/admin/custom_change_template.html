@@ -1,0 +1,7 @@
+{% extends 'admin/change_form.html' %}
+{% block submit_buttons_bottom %}
+    {{ block.super }} 
+    <div  class="submit-row">  {# this button will POST request with the name 'execute' #}
+       <input  type="submit"  value="Save As PDF"  name="exec">
+    </div>
+{% endblock %}
