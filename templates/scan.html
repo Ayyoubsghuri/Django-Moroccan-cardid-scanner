@@ -1,0 +1,83 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+
+<body>
+    <nav id="nav">
+        <h1>Province Rehamna</h1>
+        <!-- <div class="lang">
+            <h3>French </h3>
+        </div> -->
+    </nav>
+    <div class="container">
+        <div class="col">
+            <div class="card1">
+                <h1 id="time"></h1>
+                <p>Le temps a un merveilleux
+                    façon de nous montrer
+                    ce qui compte vraiment.</p>
+            </div>
+            <div class="card1">
+                <h1> Haute Sécurité</h1>
+                <p>Seul les responsables des annexes administratives ont le droit de consulter vos données,Vos donnés sont sécurisés contre les menaces .
+                </p>
+            </div>
+        </div>
+        <div  id="bottom_fade"></div>
+{%for paper in papers%} 
+        <div class="card" onclick="location.href='scan/{{ paper.tslug }}'">
+            <h1>{{ paper.TypeCommand }}</h1>
+            <p>{{ paper.description }}</p>
+            <input type="button" value="Click Here "
+                style="background-color: rgb(235, 192, 140);border: 0px;padding:15px 90px;font-size: 21px;border-radius: 15px;">
+        </div>
+{%endfor%}
+        
+      
+        <!-- <div class="card"></div> -->
+    </div>
+    <div class="show" id="show">
+        <h1>Si vous voulez savoir comment utiliser! Click ici</h1>
+        <!-- <p style="float:left;width:50%;padding-left: 20%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Quam iure ratione adipisci. Voluptas harum veritatis porro voluptatibus quidem ab optio.</p> -->
+        <p style="font-size: 1.5em;float:left;width:60%;padding-left: 22%;">1-Choisissez votre certificat d'aprés les cartes au dessus.
+        </p>
+        <p style="font-size: 1.5em;float:left;width:60%;padding-left: 22%;">2 - Mettez l'avant de votre carte national dans le scanner.
+        </p>
+        <p style="font-size: 1.5em;float:left;width:60%;padding-left: 22%;">3- Mettez l'arriére de votre carte national dans le scanner.
+        </p>
+        <p style="font-size: 1.5em;float:left;width:60%;padding-left: 22%;">4- Si vous avez déja poser une demande , vous n'étes pas obligés de nous re-donner vos informations.
+        </p>
+
+    </div>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script>
+        document.body.style.zoom = "80%";
+        setInterval(formatAMPM, 1000);
+        function formatAMPM() {
+            var date = new Date;
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ampm;
+            document.getElementById('time').innerHTML = strTime;
+        }
+
+        
+    </script>
+
+</body>
+
+</html>
