@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    color: #1a1f36;
+    /* font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif; */
+  }
+  body {
+      /* background-color: #e6eaf9; */
+      height: 100%;
+      animation: 1s ease-out 0s 1 slideInLeft;
+      min-height: 100%;
+      font-family: 'Merriweather', serif;
+      background-color: #ffffff;
+  }
+  
+  @keyframes slideInLeft {
+      0% {
+          filter: blur(8px);
+          background-color: #000000;
+          color: white;
+          /* padding:200em; */
+          background-image: url("/static/images/mesh.jpg");
+          background-size: cover;
+      }
+  
+      50% {
+          filter: blur(20px);
+          color: blue;
+          margin: 6em;
+      }
+  
+      100% {
+          filter: blur(0px);
+          background-image: url("/static/images/back.jpg");
+          background-size: cover;
+      }
+  }
+  
+  a {
+    color: #5469d4;
+    text-decoration: none;
+  }
+  .login-root {
+      background: #fff;
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Merriweather', serif;
+  }
+  .loginbackground {
+      min-height: 692px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
+      overflow: hidden;
+  }
+  .flex-flex {
+      display: flex;
+  }
+  .align-center {
+    align-items: center; 
+  }
+  .center-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .box-root {
+      box-sizing: border-box;
+  }
+  .flex-direction--column {
+      -ms-flex-direction: column;
+      flex-direction: column;
+  }
+  
+  .padding-top--64 {
+    padding-top: 64px;
+  }
+  .padding-top--24 {
+    padding-top: 24px;
+  }
+  .padding-top--48 {
+    padding-top: 48px;
+  }
+  .padding-bottom--24 {
+    padding-bottom: 24px;
+  }
+  .padding-horizontal--48 {
+    padding: 48px;
+  }
+  .padding-bottom--15 {
+    padding-bottom: 15px;
+  }
+  
+  
+  .flex-justifyContent--center {
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  
+  .formbg {
+      margin: 0px auto;
+      width: 100%;
+      max-width: 448px;
+      background: white;
+      border-radius: 4px;
+      box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  }
+  span {
+      display: block;
+      font-size: 20px;
+      line-height: 28px;
+      color: #1a1f36;
+  }
+  
+  .grid--50-50 {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      align-items: center;
+  }
+  
+  .field input {
+      font-size: 16px;
+      line-height: 28px;
+      padding: 8px 16px;
+      width: 100%;
+      min-height: 44px;
+      border: unset;
+      border-radius: 4px;
+      outline-color: rgb(84 105 212 / 0.5);
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  }
+  
+  input[type="submit"] {
+      background-color: rgb(84, 105, 212);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 
+                  rgb(84, 105, 212) 0px 0px 0px 1px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+  }
+  
+  /* */
+  
+  .modal {
+      backdrop-filter: blur(5px);
+      display: block;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+  
+  }
+  
+  
+  /* Modal Content */
+  .modal-content {
+      position: relative;
+      background-color: rgb(91, 175, 171);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgb(100, 100, 100);
+      backdrop-filter: blur(8.5px);
+      -webkit-backdrop-filter: blur(8.5px);
+      margin: auto;
+      font-size: 20px;
+      color: white;
+      font-family: 'Questrial', sans-serif;
+      animation-name: animatetop;
+      animation-duration: 0.4s;
+      padding: 30px;
+      z-index: 199;
+      width: 80%;
+  }
+  
+  @keyframes animatetop {
+      from {
+          top: -300px;
+      }
+  
+      to {
+          top: 0;
+      }
+  }
+  
+  .model-content p {
+      font-size: 40px;
+  }
+  
