@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Raleway-Light';
+        }
+
+        .container {
+            margin-left: 2em;
+            font-size: 1.4em;
+        }
+
+        @media print {
+            .container .line h1 {
+            display: inline;
+            text-align: right;
+            }
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Royaume du Maroc</p>
+        <p>Ministere de l'interieur</p>
+        <p>Region : Marrakesh-Safi</p>
+        <p>Prefecture/Province : Rehamna</p>
+        <p>N : </p>
+        <p style="text-align:right;margin-right: 6em;">date : {{dtnow}} </p>
+        <h1 style="text-align:center;">Attestation de deplacement derogatoire</h1>
+        <p> Je, soussigne (e),</p>
+        <p> M. /Mme :{{smia}} {{knia}} </p>
+        <p> N Carte d'identite nationale : {{cin}} </p>
+        <p>Adresse: {{adresse_now}}</p>
+        <p>Certifie que mon deplacement a l'exterieur de mon domicile est dicte par l'un des motifs mentionnes ci-apres
+            (cocher la case correspondante) :</p>
+        <p>Deplacement pour le travail (secteur :......................................................Adresse du lieu
+            de travail :................................................................ ;</p>
+        <p>Deplacement pour effectuer des achats de premiere necessite a proximite du domicile ;</p>
+        <p>Deplacement pour motif de sante ;</p>
+        <p>Deplacement pour l'achat de medicaments ;</p>
+        <p>Deplacement pour une necessite imperieuse.</p>
+        <br>
+        <div class="line">
+            <h1>Signature du soussigne</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h1>Signature de l'agent controleur</h1>
+        </div>
+    </div>
+</body>
+
+</html>
