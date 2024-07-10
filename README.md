@@ -83,21 +83,6 @@ This project was created as my second Django project while I was interning in th
 - View and transform CIN data into certificate templates.
 - Export certificates to PDF for users.
 
-## Contributing
-1. **Fork the repository**.
-2. **Create a new branch**:
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-3. **Commit your changes**:
-    ```bash
-    git commit -m 'Add some feature'
-    ```
-4. **Push to the branch**:
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-5. **Open a pull request**.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
